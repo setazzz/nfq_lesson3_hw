@@ -11,7 +11,8 @@
     {
         "psr-4":
         {
-            "magic_box\\": "magic_box"
+            "magic_box\\": "folders/magic_box",
+            "other\\": "folders/other"
         }
     }
 }

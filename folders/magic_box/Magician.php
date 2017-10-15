@@ -13,6 +13,11 @@ class Magician
     private $lastName;
     private $tricks;
 
+    public function getName()
+    {
+        return $this->firstName . ' ' . $this->lastName;
+    }
+
     public function __construct($firstName, $lastName)
     {
         $this->firstName = $firstName;
@@ -21,7 +26,7 @@ class Magician
 
     public function __toString()
     {
-        return "Hello, this is " . $this->firstName . ' ' . $this->lastName . "!</br>";
+        return "Hello, this is $this->firstName $this->lastName!</br>";
     }
 
     public function __call($name, $arguments)
@@ -38,7 +43,7 @@ class Magician
 
     public function __set($name, $value)
     {
-        echo "'" . $name . ' a ' . $value . "' added to tricks list.</br>";
+        echo "'$name a $value' added to tricks list.</br>";
         $this->tricks[$name] = $value;
     }
 
@@ -73,7 +78,22 @@ class Magician
         ];
     }
 
+    public function __sleep()
+    {
+        return array('firstName', 'lastName', 'tricks');
+    }
+
+    public function __wakeup()
+    {
+        echo $this->firstName;
+    }
+
+    public function __clone()
+    {
+        $this->lastName .= "'s clone";
+    }
+
     function __destruct() {
-        echo "Drops mic ant says: '$this->firstName is out!'</br>";
+        echo "$this->firstName $this->lastName has left the scene</br>";
     }
 }

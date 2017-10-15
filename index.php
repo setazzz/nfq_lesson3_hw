@@ -7,37 +7,73 @@
  */
 
 use magic_box\Magician;
+use other\exportable\Exportable;
 
 require_once 'vendor/autoload.php';
 
-echo '//__callStatic()</br>';
+//__callStatic()
 Magician::pull('a rabbit');
 
-echo '//__construct()</br>';
+//__construct()
+echo '</br>';
 echo 'A new magician was created. Below is his performance.</br>';
 $magician = new Magician('David', 'Copperfield');
 
-echo '//__debugInfo()</br>';
+//__debugInfo()
+echo '</br>';
 var_dump($magician);
 
-echo '</br>//__toString()</br>';
+//__toString()
+echo '</br></br>';
 echo $magician;
 
-echo '//__call()</br>';
+//__call()
+echo '</br>';
 $magician->planking('on nails');
 
-echo '//__set()</br>';
+//__set()
+echo '</br>';
 $magician->catch = 'bullet';
 
-echo '//__invoke()</br>';
+//__invoke()
+echo '</br>';
 $magician('cut a lady in half');
 
-echo '//__isset() and __get()</br>';
+//__isset() and __get()
+echo '</br>';
 if (isset($magician->catch)) {
-    echo "Now I will do a " . $magician->catch . " trick. It is my best!</br>";
+    echo "Now I will do a $magician->catch trick. It is my best!</br>";
 }
 
-echo '//__unset()</br>';
+//__unset()
+echo '</br>';
 unset($magician->catch);
 
-echo '//__destruct()</br>';
+//__destruct()
+echo '</br>';
+
+//__sleep()
+$magician = serialize($magician);
+echo '</br>';
+echo "A magician has left the scene, but it's data is stored here: $magician</br>";
+
+//__weakup()
+echo '</br>';
+$magician = unserialize($magician);
+echo $magician->firstName . " has not come back on stage for a last trick.</br>";
+
+//__clone()
+$assistant = clone $magician;
+
+echo $assistant . '</br>';
+
+echo "Here ar the shows credits:</br>";
+//__set_state()
+$credits = new Exportable();
+$credits->artist1 = $magician->getName();
+$credits->artist2 = $assistant->getName();
+
+$creditsString = var_export($credits, true);
+var_dump($creditsString);
+
+echo '</br></br>Show is over.</br></br>';
