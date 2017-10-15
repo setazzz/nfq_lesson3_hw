@@ -1,0 +1,17 @@
+{
+    "name": "root/nfq_lesson3_hw",
+    "authors": [
+        {
+            "name": "Matas Dominas",
+            "email": "mdominas@gmail.com"
+        }
+    ],
+    "require": {},
+    "autoload":
+    {
+        "psr-4":
+        {
+            "magic_box\\": "magic_box"
+        }
+    }
+}

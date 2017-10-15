@@ -5,6 +5,7 @@
  * Date: 10/14/17
  * Time: 8:01 PM
  */
+namespace magic_box;
 
 class Magician
 {
@@ -73,6 +74,6 @@ class Magician
     }
 
     function __destruct() {
-        echo 'drops mic ant says: "David is out!"</br>';
+        echo "Drops mic ant says: '$this->firstName is out!'</br>";
     }
 }

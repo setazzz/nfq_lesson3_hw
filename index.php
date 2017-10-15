@@ -6,8 +6,9 @@
  * Time: 8:07 PM
  */
 
-include 'magic_box/Magician.php';
-include 'Connection.php';
+use magic_box\Magician;
+
+require_once 'vendor/autoload.php';
 
 echo '//__callStatic()</br>';
 Magician::pull('a rabbit');
